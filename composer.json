@@ -1,0 +1,95 @@
+{
+    "name": "oi-lab/oi-laravel-changelogs",
+    "description": "A markdown-based change log journal for Laravel: artisan commands to write and check entries, and a ready-to-install Inertia/React screen to read them",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "changelog",
+        "change-log",
+        "release-notes",
+        "markdown",
+        "inertia"
+    ],
+    "homepage": "https://github.com/oi-lab/oi-laravel-changelogs",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "OI Lab",
+            "email": "olivier@olacombe.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/cache": "^11.0|^12.0|^13.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/filesystem": "^11.0|^12.0|^13.0",
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/pagination": "^11.0|^12.0|^13.0",
+        "illuminate/routing": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "league/commonmark": "^2.0",
+        "spatie/laravel-data": "^4.23",
+        "symfony/yaml": "^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "inertiajs/inertia-laravel": "^1.0|^2.0",
+        "laravel/pint": "^1.29",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "suggest": {
+        "inertiajs/inertia-laravel": "Required to render the change log screen (^1.0|^2.0)"
+    },
+    "autoload": {
+        "psr-4": {
+            "OiLab\\OiLaravelChangelogs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OiLab\\OiLaravelChangelogs\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OiLab\\OiLaravelChangelogs\\OiLaravelChangelogsServiceProvider"
+            ]
+        },
+        "oi-lab": {
+            "skills": [
+                {
+                    "name": "oilab-laravel-changelogs",
+                    "description": "Write and check the change log entries of this application",
+                    "path": "resources/stubs/ai-skill.md",
+                    "rules": "resources/stubs/claude-rules.md",
+                    "section": "oi-lab/oi-laravel-changelogs rules"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "sync-ai-skills": [
+            "@php scripts/sync-ai-skills.php"
+        ],
+        "post-autoload-dump": [
+            "@php scripts/sync-ai-skills.php"
+        ],
+        "test": [
+            "@php vendor/bin/pest"
+        ],
+        "lint": [
+            "@php vendor/bin/pint"
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

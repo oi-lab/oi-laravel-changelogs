@@ -1,0 +1,7 @@
+{
+    "type": "package",
+    "name": "oi-lab/oi-laravel-changelogs",
+    "title": "OI Laravel Changelogs",
+    "description": "A markdown-based change log journal for Laravel: one file per entry in the repository, two artisan commands to write and police them, and an installable Inertia/React screen to read them.",
+    "order": 100
+}
