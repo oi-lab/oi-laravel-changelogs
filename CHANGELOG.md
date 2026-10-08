@@ -5,6 +5,15 @@ All notable changes to `oi-lab/oi-laravel-changelogs` will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- `change-log:make` quotes the commit hashes it writes: an unquoted short hash
+  made only of digits and one `e` (`677e661`) was read back by YAML as a float
+  in scientific notation, and one made only of digits as an integer, so the
+  entry named a commit that does not exist.
+
 ## [1.0.0] - 2026-09-17
 
 ### Added

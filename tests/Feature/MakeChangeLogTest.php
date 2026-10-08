@@ -29,6 +29,17 @@ it('opens an entry named after its date and its title', function () {
     ]);
 });
 
+it('quotes a hash yaml would read as a number', function (string $hash) {
+    $this->artisan('change-log:make', [
+        'title' => 'A hash in scientific notation',
+        '--commit' => [$hash],
+        '--date' => '2026-09-12',
+    ])->assertSuccessful();
+
+    expect(frontmatterOf($this->path().'/2026-09-12-a-hash-in-scientific-notation.md')['commits'])
+        ->toBe([$hash]);
+})->with(['scientific notation' => '677e661', 'digits only' => '1234567']);
+
 it('leaves placeholders saying what is still missing', function () {
     $this->artisan('change-log:make', ['title' => 'Something broke', '--date' => '2026-09-12'])
         ->assertSuccessful();
