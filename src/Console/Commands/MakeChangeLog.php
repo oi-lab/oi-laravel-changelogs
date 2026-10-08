@@ -184,7 +184,9 @@ class MakeChangeLog extends Command
             'date: '.$date->toDateString(),
             'type: '.$type->value,
             ...$this->yamlList('tags', $tags),
-            ...$this->yamlList('commits', $commits),
+            // Quoted: an unquoted short hash such as 677e661 reads back as a
+            // float in scientific notation (INF), and 1234567 as an integer.
+            ...$this->yamlList('commits', array_map(static fn (string $commit): string => '"'.$commit.'"', $commits)),
             '---',
         ];
 
